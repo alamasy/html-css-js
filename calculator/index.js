@@ -8,14 +8,26 @@ for (let i = 0; i < elButtons.length; i++) {
     } else if (buttonValue === "=") {
       calculate();
     } else {
-      elDIsplay = "";
       appendValue(buttonValue);
     }
   });
 }
 
 let elDIsplay = document.getElementById("result");
-// elDIsplay.value = 0;
+elDIsplay.value = "0";
+function clearResult() {
+  elDIsplay.value = "0";
+}
+
+function calculate() {
+  elDIsplay.value = eval(elDIsplay.value);
+}
+
 function appendValue(buttonValue) {
-  elDIsplay.value += buttonValue;
+  if (elDIsplay.value === "0") {
+    elDIsplay.value = "";
+    elDIsplay.value += buttonValue;
+  } else {
+    elDIsplay.value += buttonValue;
+  }
 }
