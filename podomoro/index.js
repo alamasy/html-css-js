@@ -15,6 +15,8 @@ function updateWaktu() {
     .padStart(2, "0")}`;
 }
 
+updateWaktu();
+
 elStart.addEventListener("click", () => {
   interval = setInterval(() => {
     waktuTersisa--;
