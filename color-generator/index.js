@@ -10,12 +10,8 @@ function generate() {
     const element = elColorContainers[i];
 
     element.style.background = generateRandomColor();
-    element.textContent = generateRandomColor();
   }
-  elColorContainers[0].textContent = generateRandomColor();
 }
-
-// console.log(elColorContainers.length);
 
 function generateRandomColor() {
   const colorChar = "abcdef0123456789";
