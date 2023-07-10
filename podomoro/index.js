@@ -2,6 +2,7 @@ const elTimer = document.getElementById("timer");
 const elStart = document.getElementById("start");
 const elStop = document.getElementById("stop");
 const elReset = document.getElementById("reset");
+const elAudio = document.getElementById("audio");
 
 let interval;
 let waktuTersisa = 120;
@@ -18,6 +19,7 @@ function updateWaktu() {
 updateWaktu();
 
 elStart.addEventListener("click", () => {
+  elStart.disabled = true;
   interval = setInterval(() => {
     waktuTersisa--;
     updateWaktu();
@@ -33,9 +35,11 @@ elStart.addEventListener("click", () => {
 
 elStop.addEventListener("click", () => {
   clearInterval(interval);
+  elStart.disabled = false;
 });
 
 elReset.addEventListener("click", () => {
+  elStart.disabled = false;
   clearInterval(interval);
   waktuTersisa = 120;
   updateWaktu();
