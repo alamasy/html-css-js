@@ -1,6 +1,6 @@
 // function for generate random hexa value of color
 function generateRandomColor() {
-  const colorChar = "abcdef0123456789";
+  const colorChar = "ABCDEF0123456789";
   const colorLength = 6;
   let res = "#";
 
@@ -25,6 +25,8 @@ function generate() {
 
 const elButton = document.getElementById("btn");
 elButton.addEventListener("click", () => {
+  console.log("halo");
+
   generate();
 });
 

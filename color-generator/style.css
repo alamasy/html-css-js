@@ -65,7 +65,7 @@ h1 {
 
 .color-container {
   background-color: #259aa6;
-  color: white;
+  color: rgb(255, 255, 0);
   display: flex;
   justify-content: center;
   align-items: center;
