@@ -1,12 +1,28 @@
 const elButton = document.querySelectorAll("button");
-console.log(elButton);
-console.log("hello");
+const elDisplay = document.getElementById("display");
 
+// Untuk tiap button
 for (let i = 0; i < elButton.length; i++) {
+  // Ketika di klik
   elButton[i].addEventListener("click", () => {
-    const value = elButton[i].textContent;
-    console.log(value);
+    const valueButton = elButton[i].textContent;
+
+    if (valueButton === "C") {
+      elDisplay.value = "0";
+    } else if (valueButton === "=") {
+      elDisplay.value = eval(elDisplay.value);
+    } else {
+      displayValue(valueButton);
+    }
   });
 }
 
-console.log(value);
+function displayValue(value) {
+  // cek display value
+  if (elDisplay.value === "0") {
+    elDisplay.value = "";
+    elDisplay.value += value;
+  } else {
+    elDisplay.value += value;
+  }
+}
