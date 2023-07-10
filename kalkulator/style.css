@@ -52,6 +52,11 @@ button:hover {
   background-color: rgb(238, 22, 22);
   color: #fff;
 }
+
+.clear:hover {
+  background-color: rgb(148, 19, 19);
+}
+
 .equal {
   background-color: #2fff2f;
   grid-row: span 2;
