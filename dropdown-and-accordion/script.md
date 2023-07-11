@@ -1,6 +1,12 @@
-# Membuat Dropdown dan Accordion dengan HTML dan CSS
+# Membuat Dropdown dengan HTML dan CSS
 
-> Dropdown dan acordion itu memiliki mekanisme yang serupa, sembunyikan konten bila ada event tertentu. The difference is that a dropdown will lay over other content on the page, while an accordion will push down the content to make room for itself. This article will show you how to build them with just CSS or with CSS plus JavaScript.
+> Dropdown adalah sebuah istilah untuk behaviour pada web yang menyembunyikan komponen dan memunculkannya ketika ada event terterntu, misal ketika diklik atau dihover.
+
+Dropdown biasanya ada pada menu navigasi pada website. Misal ada salah satu menu yang juga memiliki submenu, kita bisa menggunakan dropdown untuk menyembuyikan submenu tersebut. Lalu kita munculkan ketika mouse berada di atas item menu tersebut.
+
+Jadi disini kita akan membuat komponen navigasi dengan menggunakan tag `li` sebagai list item menu yang tentu saja dibungkus dengan tag `nav`. Kemudian disalah satu item yang memiliki submenu kita juga akan membuat list yang lainnya sebagai komponen dropdown yang akan muncul ketika dihover.
+
+Pertama kita akan membuat struktur HTML.
 
 ```
 <nav>
@@ -25,10 +31,94 @@
     <li><a href="#">Contact</a></li>
   </ul>
 </nav>
+
 ```
 
-Pertama-tama yang kita buat adalah elemen nav. Kita juga bisa menggunakan tag `<div>` sebenarnya, tapi untuk alasan semantik baiknya gunakan tag `<nav>` ketika membuat komponen navigasi.
+Setelah selesai membuat struktur HTML sekarang kita bisa menulis style di file CSS. Pertama kita hubungkan dulu file CSS ke file HTML dengan tag `link`.
 
-Setelah itu, buat links dengan menggunakan tag unordered list untuk tiap item list menu. Lalu buat container dengan tag `<div>` pada menu item untuk membungkus komponen dropdown yang akan kita buat. Kali ini kita akan membuat komponen dropdown di menu service.
+```
+<link rel="stylesheet" href="style.css">
+```
 
-You should also indicate that the link contains a dropdown. You can either use the plus sign or an icon.
+Kemudian beri style pada struktur HTML.
+
+Pertama kita akan set ulang margin, padding, dan box-sizing dengan selector `*`. Kemudian ganti warna background dengan yang agak lebih gelap. Terakhir kita hilangkan text dekorasi semua tag anchor `a` di komponen.
+
+```
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+color: #e0ffff;
+background-color: #e8e8e8;
+}
+
+a {
+color: #e0ffff;
+text-decoration: none;
+}
+```
+
+Setelah itu kita lanjutkan dengan memberi style pada komponen navigasi.
+
+```
+nav {
+background: #22232e;
+height: 10vh;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0px 10%;
+}
+
+nav .logo {
+font-size: 24px;
+font-weight: bold;
+}
+
+.menu-links-item {
+display: flex;
+gap: 20px;
+list-style: none;
+}
+
+nav ul li {
+padding: 10px 30px;
+position: relative;  /*wrapper komponen dropdown*/
+font-weight: bold;
+letter-spacing: 1.5px;
+}
+
+nav ul li a:hover {
+color: #00c2cb;
+}
+
+.dropdown {
+display: none; /*display awal none, ketika dihover baru munculkan komponen*/
+position: absolute;
+left: 8%;
+top: 100%;
+background-color: #22232e;
+}
+
+.dropdown ul {
+margin: 10px;
+}
+
+.dropdown ul li {
+width: 150px;
+padding: 10px;
+}
+
+```
+
+Pada elemen dropdown kita sengaja beri display `none` agar komponen dropdown tidak muncul. Setelah itu atur elemen agar ketika dihover display komponen dropdown berubah menjadi `block`.
+
+```
+nav ul li:hover .dropdown {
+  display: block; /* Munculkan komponen ketika dihover */
+}
+```
