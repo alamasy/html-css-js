@@ -19,6 +19,7 @@ for (let i = 0; i < elButton.length; i++) {
 
 function displayValue(value) {
   // cek display value
+
   if (elDisplay.value === "0") {
     elDisplay.value = "";
     elDisplay.value += value;
