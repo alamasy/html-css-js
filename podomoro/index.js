@@ -5,7 +5,7 @@ const elReset = document.getElementById("reset");
 const elAudio = document.getElementById("audio");
 
 let interval;
-let waktuTersisa = 120;
+let waktuTersisa = 10;
 
 function updateWaktu() {
   let menit = Math.floor(waktuTersisa / 60);
@@ -20,12 +20,14 @@ updateWaktu();
 
 elStart.addEventListener("click", () => {
   elStart.disabled = true;
+  elAudio.muted = false;
   interval = setInterval(() => {
     waktuTersisa--;
     updateWaktu();
 
     if (waktuTersisa < 0) {
       clearInterval(interval);
+
       alert("Istirahat dulu bos");
       waktuTersisa = 120;
       updateWaktu();
